@@ -10,6 +10,10 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in rec {
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [ kotlin-language-server ktlint ];
+        };
+
         packages.default = import ./default.nix { inherit pkgs; };
 
         apps.default = {
