@@ -8,18 +8,13 @@
 
   outputs = { self, flake-utils, nixpkgs }:
     flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      rec {
-        packages.gradle2nix = import ./default.nix { inherit pkgs; };
-        defaultPackage = packages.gradle2nix;
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in rec {
+        packages.default = import ./default.nix { inherit pkgs; };
 
-        apps.gradle2nix = {
+        apps.default = {
           type = "app";
-          program = "${packages.gradle2nix}/bin/gradle2nix";
+          program = "${packages.default}/bin/gradle2nix";
         };
-        defaultApp = apps.gradle2nix;
-      }
-    );
+      });
 }
