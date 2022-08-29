@@ -2,12 +2,16 @@ package org.nixos.gradle2nix
 
 import org.gradle.tooling.GradleConnector
 import org.gradle.tooling.ProjectConnection
+import java.net.URI;
 
 fun connect(config: Config): ProjectConnection =
     GradleConnector.newConnector()
         .apply {
             if (config.gradleVersion != null) {
                 useGradleVersion(config.gradleVersion)
+            }
+            if (config.gradleDistribution != null) {
+              useDistribution(URI.create(config.gradleDistribution))
             }
         }
         .forProjectDirectory(config.projectDir)

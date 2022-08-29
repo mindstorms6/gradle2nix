@@ -11,7 +11,7 @@
       let pkgs = nixpkgs.legacyPackages.${system};
       in rec {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ kotlin-language-server ktlint ];
+          buildInputs = with pkgs; [ kotlin-language-server ktlint pkgs.openjdk11 ];
         };
 
         packages.default = import ./default.nix { inherit pkgs; };

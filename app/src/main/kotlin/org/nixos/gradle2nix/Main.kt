@@ -24,6 +24,7 @@ val shareDir: String = System.getProperty("org.nixos.gradle2nix.share")
 
 data class Config(
     val gradleVersion: String?,
+    val gradleDistribution: String?,
     val gradleArgs: String?,
     val configurations: List<String>,
     val projectDir: File,
@@ -41,6 +42,8 @@ class Main : CliktCommand(
     private val gradleVersion: String? by option("--gradle-version", "-g",
         metavar = "VERSION",
         help = "Use a specific Gradle version")
+
+    private val gradleDistribution: String? by option("--gradle-distribution", "-d", metavar = "DISTRIBUTION", help = "Gradle distribution to use")
 
     private val gradleArgs: String? by option("--gradle-args", "-a",
         metavar = "ARGS",
@@ -110,6 +113,7 @@ class Main : CliktCommand(
     override fun run() {
         config = Config(
             gradleVersion,
+            gradleDistribution,
             gradleArgs,
             configurations,
             projectDir,
