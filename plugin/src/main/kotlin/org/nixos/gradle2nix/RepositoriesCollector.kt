@@ -7,6 +7,7 @@ import org.gradle.api.initialization.dsl.ScriptHandler
 import org.gradle.api.internal.artifacts.RepositoriesSupplier
 import org.gradle.kotlin.dsl.newInstance
 import org.gradle.util.GradleVersion
+import java.lang.Exception
 import javax.inject.Inject
 
 interface RepositoriesCollector {
@@ -16,7 +17,7 @@ interface RepositoriesCollector {
         fun create(project: Project): RepositoriesCollector =
             try {
                 project.objects.newInstance<RepositoriesCollector68>()
-            } catch (_: Throwable) {
+            } catch (_: java.lang.Exception) {
                 project.objects.newInstance<RepositoriesCollectorBase>()
             }
     }
