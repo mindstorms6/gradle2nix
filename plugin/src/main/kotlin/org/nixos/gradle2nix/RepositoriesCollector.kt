@@ -14,9 +14,9 @@ interface RepositoriesCollector {
 
     companion object {
         fun create(project: Project): RepositoriesCollector =
-            if (GradleVersion.current() >= GradleVersion.version("6.8")) {
+            try {
                 project.objects.newInstance<RepositoriesCollector68>()
-            } else {
+            } catch (_: Throwable) {
                 project.objects.newInstance<RepositoriesCollectorBase>()
             }
     }
