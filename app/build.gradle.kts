@@ -31,7 +31,7 @@ repositories {
 application {
     mainClass.set("org.nixos.gradle2nix.MainKt")
     applicationName = "gradle2nix"
-    applicationDefaultJvmArgs += "-Dorg.nixos.gradle2nix.share=@APP_HOME@/share"
+    applicationDefaultJvmArgs = listOf("-Dorg.nixos.gradle2nix.share=@APP_HOME@/share")
     applicationDistribution
         .from(tasks.getByPath(":plugin:shadowJar"), "$rootDir/gradle-env.nix")
         .into("share")
