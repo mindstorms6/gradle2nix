@@ -21,7 +21,11 @@ dependencies {
     testRuntimeOnly(kotlin("reflect"))
     testImplementation("org.spekframework.spek2:spek-dsl-jvm:latest.release")
     testRuntimeOnly("org.spekframework.spek2:spek-runner-junit5:latest.release")
-    testImplementation("io.strikt:strikt-core:latest.release")
+    testImplementation("io.strikt:strikt-core:0.34.1")
+    testImplementation("io.strikt:strikt-jvm:0.34.1")
+}
+repositories {
+    mavenCentral()
 }
 
 application {

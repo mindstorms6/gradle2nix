@@ -18,10 +18,11 @@ fun connect(config: Config): ProjectConnection =
         .connect()
 
 @Suppress("UnstableApiUsage")
-fun ProjectConnection.getBuildModel(config: Config, path: String): DefaultBuild {
+fun ProjectConnection.getBuildModel(config: Config, path2: String): DefaultBuild {
+    val path = path2.replace("@APP_HOME@", "")
     return model(Build::class.java).apply {
         addArguments(
-            "--init-script=$shareDir/init.gradle",
+            "--init-script=${shareDir}/init.gradle",
             "-Porg.nixos.gradle2nix.configurations=${config.configurations.joinToString(",")}",
             "-Porg.nixos.gradle2nix.subprojects=${config.subprojects.joinToString(",")}"
         )

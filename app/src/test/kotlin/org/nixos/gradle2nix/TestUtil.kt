@@ -6,9 +6,9 @@ import okio.buffer
 import okio.source
 import org.spekframework.spek2.dsl.Root
 import strikt.api.expectThat
-import strikt.assertions.exists
 import strikt.assertions.isNotNull
-import strikt.assertions.toPath
+import strikt.java.exists
+import strikt.java.toPath
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths

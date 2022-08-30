@@ -236,7 +236,7 @@ fun ContextBuilder<*>.withRepository(
     given_ { parent ->
         RepositoryFixture(
             server = Javalin.create { config ->
-                config.addStaticFiles("${fixtureRoot}/repositories/$name", Location.EXTERNAL)
+                config.staticFiles.add("${fixtureRoot}/repositories/$name", Location.EXTERNAL)
             }.start(9999),
             parent = parent as? ArgumentsSupplier
         )

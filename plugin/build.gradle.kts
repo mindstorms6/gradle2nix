@@ -21,7 +21,7 @@ dependencyLocking {
 }
 
 configurations {
-    compile {
+    all {
         dependencies.remove(project.dependencies.gradleApi())
     }
 }

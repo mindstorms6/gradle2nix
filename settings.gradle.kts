@@ -31,6 +31,9 @@ dependencyResolutionManagement {
     repositories {
         jcenter()
         maven { url = uri("https://repo.gradle.org/gradle/libs-releases") }
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
     }
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 }
