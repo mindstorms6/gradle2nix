@@ -57,6 +57,8 @@ tasks {
     startScripts {
         doLast {
             unixScript.writeText(unixScript.readText().replace("@APP_HOME@", "\$APP_HOME"))
+            unixScript.writeText(unixScript.readText().replace("DEFAULT_JVM_OPTS='\"-Dorg.nixos.gradle2nix.share=\$APP_HOME/share\"'",
+                "DEFAULT_JVM_OPTS=\"-Dorg.nixos.gradle2nix.share=\$APP_HOME/share\""))
             windowsScript.writeText(windowsScript.readText().replace("@APP_HOME@", "%APP_HOME%"))
         }
     }
