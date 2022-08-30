@@ -21,7 +21,7 @@ fun connect(config: Config): ProjectConnection =
 fun ProjectConnection.getBuildModel(config: Config, path: String): DefaultBuild {
     return model(Build::class.java).apply {
         addArguments(
-            "--init-script=${shareDir}/init.gradle",
+            "--init-script=$shareDir/init.gradle",
             "-Porg.nixos.gradle2nix.configurations=${config.configurations.joinToString(",")}",
             "-Porg.nixos.gradle2nix.subprojects=${config.subprojects.joinToString(",")}"
         )
